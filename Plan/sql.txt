@@ -1,0 +1,6 @@
+create table company(FId int auto_increment primary key,FName nvarchar(100) not null,FContact varchar(100) not null,
+FPhone varchar(20) not null,FAddress nvarchar(100),FMID int not null);
+
+create table t_dept(FId int auto_increment primary key,FName varchar(50) not null,FMID int not null,FDeptId int not null,
+FLeaderId int not null)
+
