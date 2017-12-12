@@ -26,11 +26,10 @@ router.use('/addUser',(req,res)=>{
       var params=url.parse(req.url);
       params=queryString.parse(params.query);
       console.log("addUser params is "+JSON.stringify(params));
-      pool.query('insert into t_person set ?',
-      	params,function(error,result){
-      		if(error)throw error;
-      		console.log("result is "+JSON.stringify(result));
-      	})
+      userLogic.addUser(params,function(error,result){
+           if(error)throw error;
+           console.log("result is "+JSON.stringify(result));
+      })
 })
 
 module.exports=router;

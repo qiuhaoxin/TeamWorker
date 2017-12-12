@@ -13,8 +13,9 @@ Utility.prototype={
         }
         return false;
 	},
+	//MD5 加密
 	md5Encode:function(str){
-        var encodeResult=new MD5().update(str).digest('hex');
+        var encodeResult=new md5().update(str).digest('hex');
         console.log("encodeResult is "+encodeResult);
 	}
 };
