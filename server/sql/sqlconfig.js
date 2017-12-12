@@ -1,7 +1,7 @@
 var sqlConfig={
 	host:'localhost',
 	port:3306,
-	database:'TeamWorker',
+	database:'teamworker',
 	user:'root',
 	password:'1234'
 }
