@@ -1,6 +1,37 @@
-create table company(FId int auto_increment primary key,FName nvarchar(100) not null,FContact varchar(100) not null,
-FPhone varchar(20) not null,FAddress nvarchar(100),FMID int not null);
+1.cd TeamWorker
+2.npm intall mysql
+3.在mysql 创建数据库表
 
+
+mysql -u root -p 
+create database teamworker;
+use teamworker;
+
+--公司/组织 表
+create table t_company(FMid int auto_increment,FName varchar(50) not null,FContact varchar(50) not null,
+FPhone varchar(20) not null,FAddress nvarchar(100),FMid int,FCreateTime date not null default now(),primary key(FMid));
+--alter table company modify column FCreateTime datetime;
+--describe company 查看表字段结构
+
+--部门表结构
 create table t_dept(FId int auto_increment primary key,FName varchar(50) not null,FMID int not null,FDeptId int not null,
 FLeaderId int not null)
+
+--人员表结构
+
+create table t_person(FId int auto_increment primary key,FName varchar(50) not null default 'TeamWorker',FDeptId int not null ,FPos varchar(20),FSex int not null default 0,FAge int default 20,FMobile varchar(20) not null,FCreateTime datetime not null default now(),FIsActive int not null default 0,FPsw varchar(100) not null)
+
+--任务
+
+
+--需求
+
+
+--测试
+
+
+
+
+
+
 
