@@ -2,7 +2,7 @@
 
 var chalk=require('chalk');
 var semver=require('semver');
-var packageConfig=require('../package.json');
+var packageConfig=require('../../package.json');
 //执行命令
 var exec=function(cmd){
 	return require('child_process')
@@ -16,7 +16,7 @@ function exec(cmd){
 var versionRequirements=[
      {
      	name:'node',
-     	currentVersion:semver.clean(process.version);
+     	currentVersion:semver.clean(process.version),
      	versionRequirement:packageConfig.engines.node
      },
      {
@@ -40,7 +40,7 @@ module.exports=function(){
 		console.log("To use this template,you should update your node/npm to the version!");
 		warnings.forEach(function(item){
              console.log(item);
-		}
+		})
 		process.exit(1);
 	}
 }
