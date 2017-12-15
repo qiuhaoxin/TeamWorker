@@ -1,0 +1,23 @@
+$white:#fff;
+$fontC:#858E91;
+$line:'rgba(233,236,241.3)';
+$fontSize:'16px';
+
+
+@mixin borderRadius($radius) {
+	   -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    -ms-border-radius: $radius;
+    -o-border-radius: $radius;
+    border-radius: $radius;
+}
+//flex 布局
+@mixin flexJA($jc:flex-start,$ai:flex-start){
+	display:flex;
+	justify-content:$jc,
+}
+//字体和颜色
+@mixin fac($font,$color){
+	font-size:$font;
+	color:$color;
+}

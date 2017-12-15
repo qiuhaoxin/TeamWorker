@@ -16,3 +16,10 @@
         }
     }
 </script>
+
+<style lang="scss" scoped>
+    @import '../../style/mixin';
+    .tw-pages{
+       background:blue;
+    }
+</style>

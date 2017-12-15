@@ -30,11 +30,13 @@ Utility.prototype={
         var loaders=this.cssLoader(options);
         for(var extension in loaders){
         	var loader=loaders[extension];
+            console.log("extension is "+extension);
         	output.push({
-                test:new RegExp('\\.'+extension+"$"),
+                test:'/\.'+extension+'$/',
                 loader:loader
         	})
         }
+        console.log("output is "+JSON.stringify(output));
         return output;
 	},
 	cssLoader:function(options){
@@ -61,7 +63,8 @@ Utility.prototype={
         	css:generateLoaders(['css']),
         	postcss:generateLoaders(['css']),
         	less:generateLoaders(['css','less']),
-        	sass:generateLoaders(['css','sass?indentedSyntax'])
+        	sass:generateLoaders(['css','sass?indentedSyntax']),
+            scss:generateLoaders(['css','sass'])
         }
 	}
 };
