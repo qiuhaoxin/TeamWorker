@@ -67,6 +67,8 @@
  	//修改密码
  	changePsw:function(mobile,newPsw,oldPsw){
 
- 	}
+        this.execSql("update t_person set FPsw=? where (FName=? or FMobile=?) and FPsw=?",[newPsw,mobile,mobile,oldPsw])
+ 	},
+ 	
  }
  module.exports=userLogic;

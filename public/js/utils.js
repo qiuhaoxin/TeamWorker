@@ -1,7 +1,9 @@
-var queryString=require('querystring');
-var url=require('url');
-var md5=require('md5.js');
+var queryString=require('querystring')
+var url=require('url')
+var md5=require('md5.js')
 var ExtractTextPlugin=require('extract-text-webpack-plugin')
+var config=require('../../config')
+var path=require('path')
 function Utility(){
 
 
@@ -19,6 +21,10 @@ Utility.prototype={
         var encodeResult=new md5().update(str).digest('hex');
         console.log("encodeResult is "+encodeResult);
 	},
+    assetsPath:function(_path){
+        var assetsSubDirectory=process.env.NODE_ENV==='production'?config.build.assetsSubDirectory:config.dev.assetsSubDirectory;
+        return path.posix.join(assetsSubDirectory,_path);
+    },
 	styleLoader:function(options){
         var output=[];
         var loaders=this.cssLoader(options);
