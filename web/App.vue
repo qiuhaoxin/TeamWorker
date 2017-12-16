@@ -5,3 +5,6 @@
 </template>
 <script type="text/javascript">
 </script>
+<style lang='scss' >
+     @import './style/common';
+</style>

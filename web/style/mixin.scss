@@ -12,12 +12,22 @@ $fontSize:'16px';
     border-radius: $radius;
 }
 //flex 布局
-@mixin flexJA($jc:flex-start,$ai:flex-start){
+@mixin flexJA($flexDire:column,$jc:flex-start,$ai:flex-start){
 	display:flex;
-	justify-content:$jc,
+	flex-direction:$flexDire;
+	justify-content:$jc;
+	align-items:$ai;
 }
 //字体和颜色
 @mixin fac($font,$color){
 	font-size:$font;
 	color:$color;
+}
+
+//线条
+@mixin line($w,$h,$c,$transform){
+    width:$w;
+    height:$h;
+    border-top:1px solid $c;
+    transform:$transform;	
 }

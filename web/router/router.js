@@ -1,5 +1,6 @@
 import App from '../App'
 import login from '../pages/login/login'
+import register from '../pages/register/register'
 //const login = r => require.ensure([],()=>r(require('../pages/login/login')),"login")
 
 
@@ -16,6 +17,10 @@ export default [{
         {
         	path:'/login',
         	component:login
+        },
+        {
+            path:'/register',
+            component:register
         }
 
 	]
