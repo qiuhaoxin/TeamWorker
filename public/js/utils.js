@@ -66,6 +66,9 @@ Utility.prototype={
         	sass:generateLoaders(['css','sass?indentedSyntax']),
             scss:generateLoaders(['css','sass'])
         }
-	}
+	},
+    isEmpty:function(){
+        
+    }
 };
 module.exports=new Utility();
