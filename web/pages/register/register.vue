@@ -22,7 +22,7 @@
                 <span class='tw-login-tip' v-if='tip!=""'>{{tip}}</span>
                 <button class='btn btn-register' @click='register'>注册</button>
                 <div class='line'></div>
-
+                <button class='btn btn-register' @click='register'></button>
             </form>
         </div>
      </section>
