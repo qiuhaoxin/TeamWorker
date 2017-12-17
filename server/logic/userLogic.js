@@ -57,8 +57,8 @@
 
  	},
  	//获取当前组织下的所有用户
- 	getUserList:function(){
-
+ 	getUserList:function(cb){
+        this.execSql("select * from t_person",[],cb); 
  	},
  	//获取部门
  	getDeptList:function(){

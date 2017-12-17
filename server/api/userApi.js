@@ -34,6 +34,10 @@ router.use('/addUser',(req,res)=>{
 
 router.use('/getUserList',(req,res)=>{
   console.log("getUserList!");
+  userLogic.getUserList(function(error,result){
+       if(error) throw error;
+       console.log("userList is "+JSON.stringify(result));
+  })
 })
 
 module.exports=router;
