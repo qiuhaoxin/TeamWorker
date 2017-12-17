@@ -32,4 +32,8 @@ router.use('/addUser',(req,res)=>{
       })
 })
 
+router.use('/getUserList',(req,res)=>{
+  console.log("getUserList!");
+})
+
 module.exports=router;
