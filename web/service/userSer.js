@@ -1,14 +1,12 @@
 //前端访问后台的业务逻辑
-class UserLogic(){
-	constructor(){
+import fetch from '../js/fetch'
 
-	},
-	//注册用户
-	static register(userName,mobile,psw){
-        
-	};
-	//用户登录
-	static login(mobile,psw){
+/*
+* 注册
+*/
+export const register=(userName,mobile,psw)=>fetch('/api/register',{userName,mobile,psw},'POST')
 
-	};
-}
+/*
+* 登陆
+*/
+export const login=(mobile,psw)=>fetch(mobile,psw)

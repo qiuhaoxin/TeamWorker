@@ -1,5 +1,5 @@
-//构建生产环境
 
+//构建部署环境
 require('../public/js/versionCheck')();
 require('shelljs/global')
 

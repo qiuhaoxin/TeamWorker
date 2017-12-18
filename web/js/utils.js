@@ -23,6 +23,14 @@ class Utility{
         }
         return false;
 	}
+	//合法的密码
+	static isValidPsw(pswStr){
+       var validPswReg=/^[A-Za-z0-9@$]{6,20}$/;
+       if(validPswReg.test(pswStr)){
+       	  return true;
+       }
+       return false;
+	}
 	//MD5加密
 	static MD5(str){
         var encodeResult=new md5().update(str).digest('hex');

@@ -8,18 +8,19 @@
             <p>注册新账号</p>
             <form class='tw-register-form'>
                 <div class='form-field'>
-                    <input type='text' name="phone" placeholder='手机号' v-model='mobile'/>
+                    <input type='text' name="phone" placeholder='手机号' v-model='FMobile'/>
                     <span class='icon icon-circle-o '></span>
                 </div>
                 <div class='form-field'>
-                    <input type='text' name="username" placeholder='您的名称' v-model='mobile'/>
+                    <input type='text' name="FName" placeholder='您的名称' v-model='FName'/>
                     <span class='icon icon-circle-o '></span>
                 </div>
                 <div class='form-field'>
-                    <input type='password' placeholder='密码（字母，数字，至少8、6位）' v-model='psw'/>
+                    <input type='password' placeholder='密码（字母，数字，至少8、6位）' v-model='FPsw'/>
                     <span></span>
                 </div>
-                <span class='tw-login-tip' v-if='tip!=""'>{{tip}}</span>
+                <span class='tw-register-tip' v-if='tip!=""'>{{tip}}</span>
+
                 <button class='btn btn-register' @click='register'>注册</button>
                 <div class='line'></div>
                 <button class='btn btn-register' @click='register'></button>
@@ -28,18 +29,45 @@
      </section>
 </template>
 <script>
+    import Utility from '../../js/utils'
+    import {register} from '../../service/userSer'
     export default{
         data(){
            return {
               title:'teamworker',
-              mobile:'',
-              psw:'',
+              FMobile:'',
+              FName:'',
+              FPsw:'',
               tip:''
 
            }
         },
         methods:{
-            register:function(){
+            async register(e){
+                e.preventDefault();
+                console.log("reigister!")
+                if(Utility.isEmpty(this.FMobile)){
+                    this.tip="请输入手机号！";
+                    return;
+                }
+                if(!Utility.isPhone(this.FMobile)){
+                    this.tip="请正确输入手机号！";
+                    return;
+                }
+                if(Utility.isEmpty(this.FName)){
+                    this.tip="请输入用户名！";
+                    return;
+                }
+                if(Utility.isEmpty(this.FPsw)){
+                    this.tip="请输入密码！";
+                    return;
+                }
+                if(!Utility.isValidPsw(this.FPsw)){
+                    this.tip="密码包含非法字符！";
+                    return;
+                }
+                this.userInfo=await register(this.FName,this.FMobile,this.FPsw);
+                console.log("user if "+JSON.stringify(this.userInfo));
 
             }
         }
@@ -81,7 +109,11 @@
        position:relative;background-color:#3DA8F5;color:#fff;width:100%;padding:12px;margin-top:7px;
        border-radius:3px;font-size:19px;letter-spacing:3px;margin-bottom:25px;
     }
+    .tw-register-tip{
+        color:red;
+    }
      .line{
         @include line(100%,1px,#ccc,scaleY(.5));
     }
+    
 </style>

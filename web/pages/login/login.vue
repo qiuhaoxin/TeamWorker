@@ -16,7 +16,7 @@
                 <div class='forgetPsw'>
                    忘记密码?
                 </div>
-                <span class='tw-login-tip' v-if='tip!=""''>{{tip}}</span>
+                <span class='tw-login-tip' v-if='tip!=""'>{{tip}}</span>
                 <button class='btn btn-login' @click='login'>登录</button>
                 <div class='line'></div>
                 <div class='account'>

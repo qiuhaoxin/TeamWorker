@@ -8,6 +8,7 @@ var config=require('../config')
 
 var opn=require('opn')
 var webpackConfig=require('./webpack.dev.conf')
+var proxyMiddleware=require('http-proxy-middleware')
 
 var port=process.env.PORT||config.dev.port
 var app=express();
@@ -34,6 +35,20 @@ compiler.plugin('complication',function(complication){
          cb()
       })
 })
+
+var context=config.dev.context
+
+switch(process.env.NODE_ENV){
+	case 'local':var proxypath='http://localhost:8081'; break;
+	default:var proxypath=config.dev.proxypath;
+}
+var options={
+	target:proxypath,
+	changeOrigin:true
+}
+if(context.length){
+	app.use(proxyMiddleware(context,options))
+}
 
 app.use(require('connect-history-api-fallback')())
 

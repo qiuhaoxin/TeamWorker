@@ -22,13 +22,25 @@ router.use('/login',(req,res)=>{
     });
 })
 
-router.use('/addUser',(req,res)=>{
-      var params=url.parse(req.url);
-      params=queryString.parse(params.query);
-      console.log("addUser params is "+JSON.stringify(params));
+router.use('/register',(req,res)=>{
+      var params=req.body;
+      console.log("params is "+JSON.stringify(params));
+
+      // var params=url.parse(req.url);
+      // params=queryString.parse(params.query);
+      // console.log("addUser params is "+JSON.stringify(params));
+
       userLogic.addUser(params,function(error,result){
-           if(error)throw error;
+           if(error){
+              throw error;
+           }
            console.log("result is "+JSON.stringify(result));
+           res.send({
+              code:1,
+              data:JSON.stringify(result),
+              msg:'获取数据成功！'
+           })
+           return;
       })
 })
 
@@ -39,5 +51,7 @@ router.use('/getUserList',(req,res)=>{
        console.log("userList is "+JSON.stringify(result));
   })
 })
+
+
 
 module.exports=router;

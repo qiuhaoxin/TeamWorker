@@ -26,10 +26,11 @@ export default async(url='',data={},type='GET',method='fetch')=>{
 		}
 		if(type=='POST'){
 			Object.defineProperty(requestConfig,'body',{
-				value:JSON.substring(data)
+				value:JSON.stringify(data)
 			})
 		}
 		try{
+			console.log("testwe!");
             const response=await fetch(url,requestConfig);
             const responseJson=await response.json();
             return response;

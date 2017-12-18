@@ -12,9 +12,6 @@ console.log("baseWeb"+JSON.stringify(baseWebPackConfig));
 Object.keys(baseWebPackConfig.entry).forEach(function(name){
     baseWebPackConfig.entry[name]=["./build/dev-client"].concat(baseWebPackConfig.entry[name]);
 })
-console.log("styleload is "+JSON.stringify(Utility.styleLoader({
-      sourceMap:config.dev.cssSourceMap
-    })));
 module.exports=merge(baseWebPackConfig,{
 	module:{
 		loaders:Utility.styleLoader({

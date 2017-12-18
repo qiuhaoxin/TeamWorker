@@ -16,7 +16,7 @@
  	},
  	//用户登陆
  	login:function(userName,usePsw,cb){
-         if(Utility.isEmpty(userName)){
+         if(Utility.isEmpty(FName)){
          	return "用户名不能为空！";
          } 	 
          usePsw= Utility.md5Encode(usePsw);
