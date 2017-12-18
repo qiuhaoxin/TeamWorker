@@ -1,0 +1,6 @@
+解决Mac mysql 登录时Access denies 问题，可参考：
+1.http://blog.csdn.net/lijilong_/article/details/70991809
+2.如果是mysqld_safe A mysqld process already exits
+通过:ps -A|grep mysql 查看mysqld_safe 进程ID
+kill -9 -xxx 终结ID为xxx的进程
+

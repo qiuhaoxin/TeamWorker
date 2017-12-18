@@ -3,6 +3,6 @@ var sqlConfig={
 	port:3306,
 	database:'teamworker',
 	user:'root',
-	password:'1234'
+	password:'123'
 }
 exports.sqlConfig=sqlConfig;
