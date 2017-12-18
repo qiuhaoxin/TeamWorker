@@ -29,7 +29,6 @@ router.use('/register',(req,res)=>{
       // var params=url.parse(req.url);
       // params=queryString.parse(params.query);
       // console.log("addUser params is "+JSON.stringify(params));
-
       userLogic.addUser(params,function(error,result){
            if(error){
               throw error;

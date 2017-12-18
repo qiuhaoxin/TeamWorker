@@ -3,6 +3,7 @@
 3.在mysql 创建数据库表
 
 
+
 mysql -u root -p 
 create database teamworker;
 use teamworker;
