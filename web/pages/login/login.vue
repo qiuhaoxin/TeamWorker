@@ -14,7 +14,7 @@
                     <span></span>
                 </div>
                 <div class='forgetPsw'>
-                   忘记密码?
+                   <router-link to='/forgot'>忘记密码?</router-link>
                 </div>
                 <span class='tw-login-tip' v-if='tip!=""'>{{tip}}</span>
                 <button class='btn btn-login' @click='login'>登录</button>
@@ -92,7 +92,10 @@
         margin-bottom:7px;
     }
     .forgetPsw{
-        @include flexJA(row,flex-end,center);color:#9f9f9f;
+        @include flexJA(row,flex-end,center);
+    }
+    .forgetPsw a {
+        color:#9f9f9f;
     }
     .btn-login{
        position:relative;background-color:#3DA8F5;color:#fff;width:100%;padding:12px;margin-top:7px;
@@ -110,7 +113,7 @@
     .account span:first-child{
        color:#a6a6a6;
     }
-    .newAccount{
+    a .newAccount{
         color:#03a9f4;
     }
     .newAccount:hover{

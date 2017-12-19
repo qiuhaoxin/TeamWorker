@@ -30,11 +30,12 @@
 </template>
 <script>
     import Utility from '../../js/utils'
-    import {register} from '../../service/userSer'
+    import {register,getImageCode} from '../../service/userSer'
     export default{
         data(){
            return {
               title:'teamworker',
+              imageCode:null,
               FMobile:'',
               FName:'',
               FPsw:'',
@@ -42,7 +43,14 @@
 
            }
         },
+        created(){
+           this.getImageCode()
+        },
         methods:{
+            async getImageCode(){
+                var result=await getImageCode();
+                console.log("result is "+JSON.stringify(result));
+            },
             async register(e){
                 e.preventDefault();
                 console.log("reigister!")

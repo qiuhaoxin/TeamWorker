@@ -1,7 +1,7 @@
 /*
  * 用户业务逻辑 登陆，添加，查询
  */
-
+var Capchas=require('../model/captchas');
  var mysql=require('mysql');
  var sqlConfig=require('../sql/sqlconfig');
  var Utility=require('../../public/js/utils');
@@ -28,12 +28,9 @@
          }
 
  	},
- 	//同一个组织下是否已存在相同的用户，以手机/登陆名为标准
- 	searchPerson:function(mobile){
-         this.execSql("select 1 as result from t_person where FName=? or FMobile=?",[mobile],function(error,result){
-             if(error)throw error;
-             console.log("result is "+JSON.stringify(result));
-         });
+ 	//同一个组织下是否已存在相同的用户，以手机为标准
+ 	searchPerson:function(FMobile,cb){
+         this.execSql("select 1 as result from t_person where FMobile=?",[FMobile],cb);
  	},
  	//添加用户 真实姓名，电话号码，密码是必录
  	addUser:function(params,cb){
@@ -64,6 +61,21 @@
  	getDeptList:function(){
 
  	},
+  getImageCode:function(cb){
+       var base64=null;
+       try{
+           base64=Capchas.getCaptchas();
+           //console.log("base 64 is "+base64);
+           if(cb){
+              cb(null,base64);
+           }
+       }catch(e){
+           if(cb){
+              cb(e,base64)
+           }
+       }
+    
+  },
  	//修改密码
  	changePsw:function(mobile,newPsw,oldPsw){
 

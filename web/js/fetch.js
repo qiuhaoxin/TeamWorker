@@ -33,7 +33,7 @@ export default async(url='',data={},type='GET',method='fetch')=>{
 			console.log("testwe!");
             const response=await fetch(url,requestConfig);
             const responseJson=await response.json();
-            return response;
+            return responseJson;
 		}catch(e){
             throw new Error(e);
 		}

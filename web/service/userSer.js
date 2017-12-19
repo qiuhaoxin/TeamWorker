@@ -9,4 +9,13 @@ export const register=(FName,FMobile,FPsw)=>fetch('/api/register',{FName,FMobile
 /*
 * 登陆
 */
-export const login=(mobile,psw)=>fetch(mobile,psw)
+export const login=(FMobile,FPsw)=>fetch(FMobile,FPsw)
+
+/*
+ * search user
+ */
+export const searchUser=(FMobile)=>fetch('/api/searchUser',{FMobile},"POST")
+
+export const getImageCode=()=>fetch('/api/getImageCode')
+
+
