@@ -62,16 +62,15 @@ var Capchas=require('../model/captchas');
 
  	},
   getImageCode:function(cb){
-       var base64=null;
        try{
-           base64=Capchas.getCaptchas();
+          let result=Capchas.getCaptchas();
            //console.log("base 64 is "+base64);
            if(cb){
-              cb(null,base64);
+              cb(null,result);
            }
        }catch(e){
            if(cb){
-              cb(e,base64)
+              cb(e,result)
            }
        }
     

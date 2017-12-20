@@ -4,7 +4,7 @@ import fetch from '../js/fetch'
 /*
 * 注册
 */
-export const register=(FName,FMobile,FPsw)=>fetch('/api/register',{FName,FMobile,FPsw},'POST')
+export const register=(FName,FMobile,FPsw,FImageCode)=>fetch('/api/register',{FName,FMobile,FPsw,FImageCode},'POST')
 
 /*
 * 登陆

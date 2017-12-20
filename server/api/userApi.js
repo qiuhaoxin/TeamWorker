@@ -23,12 +23,30 @@ router.use('/login',(req,res)=>{
 })
 
 router.use('/register',(req,res)=>{
-      var params=req.body;
+      let params=req.body;
+      console.log("cookies is "+req.cookies);
+      const cap=req.cookies.cap;
+      if(!cap){
+        res.send({
+          code:1,
+          msg:'验证码失效！',
+          count:0,
+          data:null
+        })
+        return;
+      }
       console.log("params is "+JSON.stringify(params));
-
-      // var params=url.parse(req.url);
-      // params=queryString.parse(params.query);
-      // console.log("addUser params is "+JSON.stringify(params));
+      console.log("FImageCode is "+params["FImageCode"]);
+      if(cap.toString()!=params['FImageCode']){
+         res.send({
+            code:1,
+            msg:'验证码错误!',
+            count:0,
+            data:null
+         })
+         return;
+      }
+      delete params.FImageCode;
       userLogic.addUser(params,function(error,result){
            if(error){
               throw error;
@@ -36,7 +54,8 @@ router.use('/register',(req,res)=>{
            res.send({
               code:1,
               data:JSON.stringify(result),
-              msg:'获取数据成功！'
+              msg:'获取数据成功！',
+              count:1
            })
            return;
       })
@@ -74,11 +93,10 @@ router.use('/searchUser',(req,res)=>{
  */
 router.use('/getImageCode',(req,res)=>{
     userLogic.getImageCode(function(error,data){
-      var cap=parseInt(Math.random() * 9000 +1000);
-      res.cookie('cap',cap,{maxAge:300000,httpOnly:true});
+      res.cookie('cap',data['cap'],{maxAge:300000,httpOnly:true});
       res.send({
         code:1,
-        data:[{image:'data:image/png;base64,'+data}],
+        data:[{image:'data:image/png;base64,'+data['base64']}],
         msg:'get Image Code successfully!',
         count:1
       })

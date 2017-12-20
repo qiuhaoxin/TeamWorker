@@ -15,12 +15,20 @@
                     <input type='text' name="FName" placeholder='您的名称' v-model='FName'/>
                     <span class='icon icon-circle-o '></span>
                 </div>
+                <div class='imgCode'>
+                   <input v-model='FImageCode' placeholder="请输入验证码"/>
+                   <img :src='FImage' class='tw-register-border'/>
+                </div>
                 <div class='form-field'>
-                    <input type='password' placeholder='密码（字母，数字，至少8、6位）' v-model='FPsw'/>
+                    <input type='password' placeholder='密码（字母，数字，至少6位）' v-model='FPsw'/>
+                    <span></span>
+                </div>
+                <div class='form-field repeatPsw'>
+                    <input type='password' placeholder='重复密码' v-model='RepeatPsw'/>
                     <span></span>
                 </div>
                 <span class='tw-register-tip' v-if='tip!=""'>{{tip}}</span>
-
+     
                 <button class='btn btn-register' @click='register'>注册</button>
                 <div class='line'></div>
                 <button class='btn btn-register' @click='register'></button>
@@ -39,7 +47,10 @@
               FMobile:'',
               FName:'',
               FPsw:'',
-              tip:''
+              RepeatPsw:'',
+              tip:'',
+              FImage:'',
+              FImageCode:''
 
            }
         },
@@ -49,6 +60,9 @@
         methods:{
             async getImageCode(){
                 var result=await getImageCode();
+                if(result && result['code']==1 && result['count']==1){
+                    this.FImage=result['data'][0]['image'];
+                }
                 console.log("result is "+JSON.stringify(result));
             },
             async register(e){
@@ -70,11 +84,25 @@
                     this.tip="请输入密码！";
                     return;
                 }
+                if(Utility.isEmpty(this.FImageCode)){
+                   this.tiop="请输入验证码！";
+                   return;
+                }
                 if(!Utility.isValidPsw(this.FPsw)){
                     this.tip="密码包含非法字符！";
                     return;
                 }
-                this.userInfo=await register(this.FName,this.FMobile,this.FPsw);
+                console.log("psw is "+this.FPsw+" and reset is "+this.RepeatPsw);
+                if(this.FPsw!=this.RepeatPsw){
+                    this.tip="两次输入的密码不匹配!";
+                    return;
+                }
+                this.userInfo=await register(this.FName,this.FMobile,this.FPsw,this.FImageCode);
+                if(this.userInfo && this.userInfo.code==1 && this.userInfo.count==1){
+                   this.$router.push({
+                     path:'/mainPage'
+                   })
+                }
                 console.log("user if "+JSON.stringify(this.userInfo));
 
             }
@@ -99,12 +127,19 @@
      .form-unit{
        margin:30px auto;padding:0 20px;margin-bottom:100px;width:100%;max-width:360px;
     }
+    .imgCode{
+       display:flex;flex-direction:row;justify-content:center;align-items:center;border:1px solid #ccc;padding:7px 9px;margin-bottom:25px;
+    }
+    .imgCode input{flex-grow:2;height:100%;font-size:18px;outline:none;}
     .form-unit>p{
         text-align:center;color:#9a9a9a;margin-bottom:25px;
     }
     .form-field{position:relative;}
     .form-field input[type=text],.form-field input[type=password]{
         padding:12px;border:1px solid #d9d9d9;width:100%;margin-bottom:25px;border-radius:3px;font-size:16px;
+    }
+    .repeatPsw{
+        margin-top:20px;
     }
     .form-field input[type=text]:focus,.form-field input[type=password]:focus{
         -webkit-appearance:none;

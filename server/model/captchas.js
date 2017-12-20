@@ -13,7 +13,7 @@ class Capchas{
 		p.color(0,0,0,0);
 		p.color(80,80,80,255);
 		const base64=p.getBase64();
-		return base64;
+		return {cap,base64};
 	}
 }
 module.exports= new Capchas()
