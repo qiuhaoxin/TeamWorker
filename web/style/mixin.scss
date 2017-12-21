@@ -31,3 +31,9 @@ $fontSize:'16px';
     border-top:1px solid $c;
     transform:$transform;	
 }
+
+//宽高
+@mixin wh($width, $height){
+    width: $width;
+    height: $height;
+}

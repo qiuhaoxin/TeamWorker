@@ -57,6 +57,14 @@ module.exports={
 
             },
             {
+            test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+            loader: 'url-loader',
+            // query: {
+            //     limit: 10000,
+            //     name: Utility.assetsPath('img/[name].[ext]')
+            // }
+            },
+            {
                  test:'/\.json$/',
                  loader:'json-loader'
             },

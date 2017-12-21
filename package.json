@@ -48,6 +48,7 @@
     "semver": "^5.4.1",
     "shelljs": "^0.7.8",
     "style-loader": "^0.19.1",
+    "url-loader": "^0.6.2",
     "vue-cli": "^2.9.2",
     "vue-loader": "^13.5.0",
     "vue-style-loader": "^3.0.3",
