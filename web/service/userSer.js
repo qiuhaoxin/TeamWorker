@@ -18,4 +18,6 @@ export const searchUser=(FMobile)=>fetch('/api/searchUser',{FMobile},"POST")
 
 export const getImageCode=()=>fetch('/api/getImageCode')
 
+export const getModuleData=(FMobile)=>fetch('/api/getModuleData',{FMobile},'POST')
+
 

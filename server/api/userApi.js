@@ -9,6 +9,12 @@ var userLogic=require("../logic/userLogic");
 console.log("sql config is "+JSON.stringify(sqlConfig));
 
 var pool=mysql.createPool(sqlConfig.sqlConfig);
+function write(res,data,next){
+   res.send(data)
+   if(next){
+     next();
+   }
+}
 /*
  * 用户接口 
  */
@@ -109,6 +115,21 @@ router.use('/getUserList',(req,res)=>{
        if(error) throw error;
        console.log("userList is "+JSON.stringify(result));
   })
+})
+
+router.use('/getModuleData',(req,res)=>{
+   var result={code:1,count:0,data:null,msg:''};
+   console.log("hei getModuleData!");
+   var params=req.body;
+   userLogic.getModuleData(params['FMobile'],function(error,data){
+       if(error){
+          result['msg']=error;
+       }
+       result.count=data.length;
+       result.msg="获取数据列表成功！";
+       result.data=data;
+       write(res,result);
+   })
 })
 
 

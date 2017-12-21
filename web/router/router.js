@@ -8,9 +8,6 @@ const forgot =r=>require.ensure([],()=>r(require('../pages/forgot/forgot')),"for
 const mainPage= r => require.ensure([],()=>r(require("../pages/main/mainPage")),"mainPage")
 
 
-
-
-
 export default [{
 	path:'/',
 	component:App,

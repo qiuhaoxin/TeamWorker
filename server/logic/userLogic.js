@@ -80,6 +80,11 @@ var Capchas=require('../model/captchas');
 
         this.execSql("update t_person set FPsw=? where (FName=? or FMobile=?) and FPsw=?",[newPsw,mobile,mobile,oldPsw])
  	},
+  //获取系统模块，暂时不考虑权限问题
+  getModuleData:function(FMobile,cb){
+     
+     this.execSql("select * from t_Module ",[],cb);   
+  }
  	
  }
  module.exports=userLogic;

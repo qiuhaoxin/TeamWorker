@@ -14,6 +14,7 @@
    </section>
 </template>
 <script>
+     import {getModuleData} from '../../service/userSer'
      export default{
          data(){
            return {
@@ -23,10 +24,14 @@
            }
          },
          created(){
-            console.log("hei");
+            this.initModuleData();
          },
          methods:{
-
+            async initModuleData(){
+                console.log("hei");
+                var result=await getModuleData('15817497845');
+                console.log("result is "+JSON.stringify(result));
+            }
          }
      }
 </script>
