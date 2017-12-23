@@ -1,6 +1,7 @@
 import Utility from './utils'
 var baseUrl='';
 export default async(url='',data={},type='GET',method='fetch')=>{
+	console.log("data is "+JSON.stringify(data));
 	type=type.toUpperCase();
 	url=baseUrl+url;
 	if(type=='GET'){
@@ -35,6 +36,7 @@ export default async(url='',data={},type='GET',method='fetch')=>{
             const responseJson=await response.json();
             return responseJson;
 		}catch(e){
+			console.log("exception is "+e);
             throw new Error(e);
 		}
 	}else{

@@ -14,6 +14,7 @@ const task=r=>require.ensure([],()=>r(require("../pages/main/task/task")),"task"
 const Test=r=>require.ensure([],()=>r(require("../pages/main/test/test")),"Test")
 const weekPlan=r=> require.ensure([],()=>r(require("../pages/main/weekPlan/weekPlan")),"weekPlan")
 const support=r=> require.ensure([],()=>r(require("../pages/main/support/support")),"support")
+const person=r=>require.ensure([],()=>r(require("../pages/person/person")),"person")
 
 
 export default [{
@@ -32,7 +33,12 @@ export default [{
         },{
             path:'/forgot',
             component:forgot
-        },{
+        },
+        {
+            path:'/person',
+            component:person
+        },
+        {
             path:'/mainPage',
             component:mainPage,
             children:[

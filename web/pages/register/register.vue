@@ -97,6 +97,8 @@
                     this.tip="两次输入的密码不匹配!";
                     return;
                 }
+                console.log("after MD5 is "+Utility.MD5(this.FPsw));
+                this.FPsw=String(Utility.MD5(this.FPsw));
                 this.userInfo=await register(this.FName,this.FMobile,this.FPsw,this.FImageCode);
                 if(this.userInfo && this.userInfo.code==1 && this.userInfo.count==1){
                    this.$router.push({

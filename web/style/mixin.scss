@@ -37,3 +37,23 @@ $fontSize:'16px';
     width: $width;
     height: $height;
 }
+@mixin triangle-right($borderLine:5px,$color:#fff){
+    border-left:$borderLine solid $color;
+    border-top:$borderLine solid transparent;
+    border-bottom:$borderLine solid transparent;
+}
+@mixin triangle-left($borderLine:5px,$color:#fff){
+    border-right:$borderLine solid $color;
+    border-top:$borderLine solid transparent;
+    border-bottom:$borderLine solid transparent;
+}
+@mixin triangle-down($borderLine:5px,$color:#fff){
+    border-top:$borderLine solid $color;
+    border-left:$borderLine solid transparent;
+    border-right:$borderLine solid transparent;
+}
+@mixin triangle-up($borderLine:5px,$color:#fff){
+    border-bottom:$borderLine solid #fff;
+    border-left:$borderLine solid transparent;
+    border-right:$borderLine solid transparent;
+}

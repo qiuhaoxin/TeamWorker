@@ -4,7 +4,14 @@
             <div class='header-top'>
                 <div class='left_panel'>{{companyName}}</div>
                 <div class='right_panel'>
-                   <span>{{userName}}</span><router-link to='/login' class='loginout'><span >退出</span></router-link>
+                   <div class='personInfo' @click='pullDownPerson'>
+                      <div>{{userName}}</div><div class='triangle-down'></div>
+                      <pull-down-list flag='person' :dataSet='personData' v-if='showPerson'></pull-down-list>
+                   </div>
+       
+                   <router-link to='/login' class='loginout'>
+                      <span >退出</span>
+                   </router-link>
                 </div>
             </div>
             <div class='header-bottom'>
@@ -29,6 +36,8 @@
 <script>
      import {getModuleData} from '../../service/userSer';
      import loading from '../../components/loading'
+     import pullDownList from '../../components/PullDownList'
+     import {mainPage} from '../../data/sliceData'
      export default{
          data(){
            return {
@@ -37,18 +46,20 @@
                ModuleData:[],
                curModule:'',
                moduleClass:function(dataItem){
-               console.log("dataItem is "+JSON.stringify(dataItem)+"and curModule is "+this.curModule);
                     return dataItem['FName']==this.curModule;
                },
                isCurModule:true,
-               showLoading:true
+               showLoading:true,
+               personData:mainPage['person'],
+               showPerson:false
            }
          },
          created(){
             this.initModuleData();
          },
          components:{
-            loading
+            loading,
+            pullDownList
          },
          methods:{
             async initModuleData(){
@@ -66,6 +77,11 @@
                 this.$router.push({
                     path:dataItem.FModuleLink
                 })
+            },
+            //个人信息
+            pullDownPerson(){
+                console.log("person data is "+JSON.stringify(mainPage['person']));
+                this.showPerson=true;
             }
          }
      }
@@ -83,6 +99,15 @@
    .left_panel,.right_panel{@include flexJA(row);flex-grow:1;height:100%;}
    .left_panel{justify-content:flex-start;padding-left:50px;align-items:center;flex-grow:2}
    .right_panel{flex-grow:1;justify-content:flex-end;padding-right:50px;}
+   .personInfo{
+      display:inline-flex;padding:0 10px;position:relative;
+   }
+   .personInfo:hover{
+      cursor:pointer;background:#ccc;
+   }
+   .triangle-down{
+      margin:6px 7px;@include triangle-down(5px,#fff);position:relative;bottom:0px;margin-top:10px;
+   }
    .loginout{padding-left:15px;color:#fff;}
    .header-bottom{
        flex-grow:2;width:100%;position:relative;display:inline-flex;align-items:flex-end;

@@ -1,3 +1,4 @@
+@import './mixin';
 html,body{
 	width:100%;width:100%;background-color:#fff;
 }
@@ -18,5 +19,7 @@ a{
 	text-decoration:none;
 }
 ul{
-	list-style:none;
+	list-style:none;padding:0;
 }
+
+
