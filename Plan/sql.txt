@@ -24,6 +24,25 @@ create table t_person(FId int auto_increment primary key,FName varchar(50) not n
 
 --模块
 
+--每个模块下的subMenu
+create table t_sub_Module(FId int auto_increment,FName varchar(50),FLink varchar(50),FSubTitleId int,priamary key(FId,FSubTitleId)) engine=InnoDB, default charset=utf8
+insert into t_sub_Module(FName,FLink,FSubTitleId) values('首页','',1)
+insert into t_sub_Module(FName,FLink,FSubTitleId) values('待办','',1)
+insert into t_sub_Module(FName,FLink,FSubTitleId) values('任务','',1)
+insert into t_sub_Module(FName,FLink,FSubTitleId) values('Bug','',1)
+insert into t_sub_Module(FName,FLink,FSubTitleId) values('测试','',1)
+insert into t_sub_Module(FName,FLink,FSubTitleId) values('需求','',1)
+insert into t_sub_Module(FName,FLink,FSubTitleId) values('项目','',1)
+insert into t_sub_Module(FName,FLink,FSubTitleId) values('动态','',1)
+insert into t_sub_Module(FName,FLink,FSubTitleId) values('档案','',1)
+
+insert into t_sub_Module(FName,FLink,FSubTitleId) values('需求','',2)
+insert into t_sub_Module(FName,FLink,FSubTitleId) values('动态','',2)
+insert into t_sub_Module(FName,FLink,FSubTitleId) values('计划','',2)
+insert into t_sub_Module(FName,FLink,FSubTitleId) values('发布','',2)
+insert into t_sub_Module(FName,FLink,FSubTitleId) values('文档','',2)
+insert into t_sub_Module(FName,FLink,FSubTitleId) values('项目','',2)
+insert into t_sub_Module(FName,FLink,FSubTitleId) values('概括','',2)
 --任务
 
 
